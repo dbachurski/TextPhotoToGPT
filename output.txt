@@ -1,5 +1,6 @@
-What is the definition of the phrase "Time to Interactive"?
-when HTML has loaded, but not necessarily JavaScript, CSS, or images
-when the user can see the webpage on the screen
-when the browser displays the first bit of content from the DOM
-when the user can consistently interact with all of the page elements
+What is this statement equivalent to?
+sprite->x
+O *sprite.x
+O sprite.*x
+O (*sprite).x
+Osprite.x

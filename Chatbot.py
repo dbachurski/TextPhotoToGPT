@@ -11,6 +11,7 @@ class Chatbot:
                 message = "I'm going to check you with a single choice test with answers a, b, c, d. Its is important. Do not search for informations in web!\n" + ask
             elif mode == 'normal':
                 message = "Its is important. Do not search for informations in web!\n" + ask
+                #message =  ask  # allow to search in internet
         q = Query(
             message,
             style='precise',

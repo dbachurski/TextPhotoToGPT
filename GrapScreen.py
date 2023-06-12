@@ -9,6 +9,9 @@ import time
 
 class GrapScreen:
     def __init__(self):
+        self.reset_init()
+
+    def reset_init(self):
         self.start_pos = [0, 0]
         self.start_set = False
         self.XPOS = 0
@@ -19,6 +22,7 @@ class GrapScreen:
         self.ss_start_pos = []
         self.ss_end_pos = []
         self.file_name = 'ss.jpg'
+        self.stop_flag = False
 
     def take_screenshot(self, x1, y1, x2, y2):
         if x1 > x2:
@@ -54,6 +58,7 @@ class GrapScreen:
     def on_click(self, x, y, button, pressed):
         if pressed:
             if button == mouse.Button.right:
+                self.stop_flag = True
                 self.stop_thread = True
                 return False
             else:
@@ -67,10 +72,13 @@ class GrapScreen:
             return False
 
     def start_listener(self):
+        self.reset_init()
         draw_thread = threading.Thread(target=self.draw_rect_thread, daemon=True)
         with Listener(on_move=self.on_move, on_click=self.on_click) as listener:
             draw_thread.start()
             listener.join()
+        return self.stop_flag
+
 
 
 grap = GrapScreen()
